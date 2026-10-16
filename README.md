@@ -62,8 +62,9 @@ Dashboard → **Branding** → **Custom CSS** and save.
    - the **Skip Intro** button adapts automatically (violet progress bar)
 3. **Centered navbar (desktop)** — on Jellyfin 12's modern MUI layout the
    server name stays on the left and the nav options are horizontally
-   centered; buttons are flat (no fill), and the selected view shows **white
-   text with an underline that animates in from the center**
+   centered; buttons are **always transparent with white text** (hover
+   included), and the selected view adds an **underline that animates in
+   from the center**
 4. **Library tiles without labels** — "My Media" tiles show artwork only
 5. **Detail-page buttons** — extra spacing; on phones they spread across the
    full width, on tablets they stack vertically; never overflow the screen
