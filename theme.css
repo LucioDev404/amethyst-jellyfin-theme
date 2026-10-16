@@ -219,20 +219,24 @@ html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-r
 }
 
 /* Nav text buttons — ALWAYS transparent with white text (idle, hover,
-   pressed). Matches MuiButton-text / textInherit / textPrimary from the
-   real DOM, and kills MUI's violet hover pill and primary-colored label. */
+   pressed). !important is REQUIRED: the embedded ElegantFin forces
+   .MuiButton-colorPrimary into a solid submit-style pill with !important. */
 html .layout-desktop .MuiAppBar-root .MuiButton-text {
     position: relative;
     font-weight: 600;
-    color: #ffffff;
-    background-color: transparent;
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
 }
 
 html .layout-desktop .MuiAppBar-root .MuiButton-text:hover,
 html .layout-desktop .MuiAppBar-root .MuiButton-text:focus-visible,
 html .layout-desktop .MuiAppBar-root .MuiButton-text:active {
-    color: #ffffff;
-    background-color: transparent;
+    color: #ffffff !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
 }
 
 /* Underline element on every nav text button — width 0 keeps it invisible */
