@@ -50,8 +50,8 @@ a polished player.
 | *Navbar — centered options, underline on hover & active view* | *Cards — centered violet play button on hover* |
 | ![Home](screenshots/home.png) | ![Detail](screenshots/detail.png) |
 | *Home — artwork-only library tiles* | *Detail page — pill buttons* |
-| ![Player](screenshots/player.png) | ![Skip intro](screenshots/skip-intro.png) |
-| *Player OSD — violet seek bar, icon hover halo* | *Skip Intro button* |
+| ![Player](screenshots/player.png) | 
+| *Player OSD — violet seek bar, icon hover halo* | 
 
 ## 🎞️ Animations
 
@@ -70,7 +70,7 @@ a polished player.
 1. Dashboard → **Branding** → **Custom CSS** → paste:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/<YOUR-USER>/amethyst-jellyfin-theme@main/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/LucioDev404/amethyst-jellyfin-theme@main/theme.css");
 ```
 
 2. Save, then hard-refresh the client (`Ctrl+Shift+R`)

@@ -3,7 +3,7 @@
    ----------------------------------------------------------------------------
    Version : 1.1 (self-contained)
    License : GPL-2.0 (matches the embedded base theme)
-   Repo    : https://github.com/<YOUR-USER>/amethyst-jellyfin-theme
+   Repo    : https://github.com/LucioDev404/amethyst-jellyfin-theme
 
    SELF-CONTAINED: the only @import is the Intro-Skipper button CSS.
    The ElegantFin base theme (v26.09.05) is EMBEDDED below — © lscambo13,
@@ -14,7 +14,7 @@
 
    Install — pick ONE:
      A) Dashboard → Branding → Custom CSS:
-          @import url("https://cdn.jsdelivr.net/gh/<YOUR-USER>/amethyst-jellyfin-theme@main/theme.css");
+          @import url("https://cdn.jsdelivr.net/gh/LucioDev404/amethyst-jellyfin-theme@main/theme.css");
      B) Paste this whole file into Custom CSS (works too — @import is at top).
    ============================================================================ */
 
