@@ -1,17 +1,33 @@
-# Amethyst — a purple & violet theme for Jellyfin
+# 💜 Amethyst — a purple & violet theme for Jellyfin
 
-An **Apple TV / Netflix inspired** purple-violet skin for Jellyfin.
+![Version](https://img.shields.io/badge/version-2.1-8b5cf6)
+![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11%2B-191026)
+![License](https://img.shields.io/badge/license-GPL--2.0-blue)
 
-**Self-contained**: the design base is
-**[ElegantFin](https://github.com/lscambo13/ElegantFin)** (© lscambo13,
-GPL-2.0), **embedded** into `theme.css` — the only external stylesheet
-loaded is the **[Intro-Skipper button CSS](https://github.com/intro-skipper/intro-skipper-css)**.
+**Amethyst** turns Jellyfin into a cinematic, Apple TV / Netflix-inspired
+experience in **purple & violet**. The design base is
+**[ElegantFin](https://github.com/lscambo13/ElegantFin)** (embedded — the theme
+is fully self-contained), re-mapped to the Amethyst palette and refined with
+custom details: an animated navbar, curated progress bars and indicators, and
+a polished player.
 
-Amethyst re-maps every color variable of the base to a **purple / violet
-palette** and curates all the small details: card progress bars, mini play
-buttons, watched flags, OSD icons and more.
+> The **only** external stylesheet loaded is the
+> [Intro-Skipper button CSS](https://github.com/intro-skipper/intro-skipper-css).
 
-## Palette
+---
+
+## ✨ What you get
+
+| | |
+|---|---|
+| 🟣 **Full purple/violet palette** | Every color variable of the base theme + Jellyfin 12's MUI surfaces (`--jf-palette-*`) |
+| 🎬 **Animated navbar** | Server name pinned left, options centered; soft-purple underline that **grows from the center on hover** and reverses on leave; permanent underline on the active view |
+| 🃏 **Curated cards** | Violet progress bars everywhere (home **and** library pages), violet play buttons, watched flags, count badges |
+| 📺 **Polished player** | White OSD icons with a violet halo on hover, violet seek bar, glowing Skip Intro button |
+| 🖼️ **Clean library tiles** | "My Media" shows artwork only — no labels |
+| 📱 **Responsive detail page** | Buttons never leave the screen: full-width on phones, stacked on tablets |
+
+## 🎨 Palette
 
 | Role | Color |
 |---|---|
@@ -19,75 +35,69 @@ buttons, watched flags, OSD icons and more.
 | Surface | `#191026` |
 | Accent (violet) | `#8b5cf6` |
 | Accent hover | `#a78bfa` |
+| Soft accent (underline) | `#c084fc` |
 | Text | `#e9e4ff` |
 | Dim text | `#a99cc9` |
 
-## Requirements
+## 📸 Screenshots
 
-- Jellyfin **10.11+** (tested on 12.x) — web client + mobile apps
-- Client theme set to **Dark**
+> Drop your captures in a `screenshots/` folder with these exact names and
+> they will render here.
 
-## Installation
+| | |
+|---|---|
+| ![Navbar](screenshots/navbar.png) | ![Card hover](screenshots/card-hover.png) |
+| *Navbar — centered options, underline on hover & active view* | *Cards — centered violet play button on hover* |
+| ![Home](screenshots/home.png) | ![Detail](screenshots/detail.png) |
+| *Home — artwork-only library tiles* | *Detail page — pill buttons* |
+| ![Player](screenshots/player.png) | ![Skip intro](screenshots/skip-intro.png) |
+| *Player OSD — violet seek bar, icon hover halo* | *Skip Intro button* |
+
+## 🎞️ Animations
+
+| Where | What happens |
+|---|---|
+| **Navbar — hover** | A soft-purple underline grows from the center of the tab and **reverses** when the mouse leaves (0.25s ease) |
+| **Navbar — selection** | The underline animates in and stays while you're inside that library |
+| **Cards — hover** | The play button scales in from the exact center of the artwork (it stays centered even mid-hover) |
+| **Player icons — hover** | A violet halo + outer glow fades in around the icon with a gentle lift; pressing sinks it slightly |
+| **Skip Intro** | A violet progress sweep runs across the button until the intro ends |
+
+## 📦 Installation
 
 ### Option A — via CDN (recommended, auto-updates)
 
-1. Push this repo to GitHub (see below)
-2. Dashboard → **Branding** → **Custom CSS** → paste this single line:
+1. Dashboard → **Branding** → **Custom CSS** → paste:
 
 ```css
 @import url("https://cdn.jsdelivr.net/gh/<YOUR-USER>/amethyst-jellyfin-theme@main/theme.css");
 ```
 
-(replace `<YOUR-USER>` with your GitHub username — jsDelivr serves any public
-repo automatically, no configuration needed)
+2. Save, then hard-refresh the client (`Ctrl+Shift+R`)
 
-3. Save, then hard-refresh the client (`Ctrl+Shift+R`)
+> jsDelivr caches `@main` for ~12 hours — append `?v=N` to the URL to force
+> an update after pushing changes.
 
 ### Option B — paste everything
 
 Copy the whole content of [`theme.css`](theme.css) into
 Dashboard → **Branding** → **Custom CSS** and save.
 
-## What Amethyst changes on top of the base
+## 🖥️ Requirements
 
-1. **Purple/violet palette** — all ElegantFin variables plus Jellyfin 12's
-   `--jf-palette-*` variables (MUI navbar, dialogs, dashboard)
-2. **Curated details, all in theme color:**
-   - card **progress bars** (watch progress + player seek bar)
-   - **play buttons** on cards (hover FAB — centered on the artwork —,
-     mobile overlay button, list items)
-   - **watched flag** (green ✔ → violet), unseen-episode counts,
-     sync/media-source badges, "video version" flag
-   - **player OSD icons** in white, recording indicator in theme accent
-   - the **Skip Intro** button adapts automatically (violet progress bar)
-3. **Centered navbar (desktop)** — on Jellyfin 12's modern MUI layout the
-   server name stays on the left and the nav options are horizontally
-   centered; buttons are **always transparent with white text** (hover
-   included), and the selected view adds an **underline that animates in
-   from the center**
-4. **Library tiles without labels** — "My Media" tiles show artwork only
-5. **Detail-page buttons** — extra spacing; on phones they spread across the
-   full width, on tablets they stack vertically; never overflow the screen
+- Jellyfin **10.11+** (tested on 12.x) — web client + mobile apps
+- Client theme set to **Dark**
+
+## 🎛️ Customization
+
+All colors live in the single `:root[data-theme]:root, html:root` block in the
+**AMETHYST OVERRIDES** section at the bottom of [`theme.css`](theme.css) —
+edit the hex values and reload. Do not edit the embedded base theme section.
 
 > Note: the **Inter webfont** import that ships with ElegantFin was removed
 > (single-import policy) — text uses the system sans-serif instead.
 
-## Publishing your repo
-
-```bash
-cd amethyst-jellyfin-theme
-git remote add origin git@github.com:<YOUR-USER>/amethyst-jellyfin-theme.git
-git push -u origin main
-```
-
-## Customization
-
-All colors live in the single `:root[data-theme]:root, html:root` block in the
-**AMETHYST OVERRIDES** section at the bottom of [`theme.css`](theme.css) —
-edit the hex values there and reload. Do not edit the embedded base theme
-section.
-
-## Credits & License
+## 🙏 Credits & License
 
 - Base theme: [ElegantFin](https://github.com/lscambo13/ElegantFin) — © lscambo13, **GPL-2.0** (embedded)
 - Skip button: [intro-skipper-css](https://github.com/intro-skipper/intro-skipper-css) (loaded via CDN)
