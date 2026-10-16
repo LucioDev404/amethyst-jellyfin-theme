@@ -173,6 +173,14 @@ html .cardOverlayContainer > .cardOverlayFab-primary {
     transform: translate(-50%, -50%);
 }
 
+/* Base Jellyfin scales the button on hover with transform:scale(1.4), which
+   replaces the centering translate — re-anchor it so it grows from the
+   center instead of decentering. */
+html .cardOverlayContainer > .cardOverlayFab-primary:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    color: #ffffff;
+}
+
 /* Player OSD icons — white in every state (bottom bar + OSD top bar) */
 html .videoOsdBottom .paper-icon-button-light:not(:disabled),
 html .osdHeader .paper-icon-button-light:not(:disabled) {
@@ -215,17 +223,23 @@ html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-
     transform: translateY(-50%);
 }
 
-/* Nav buttons — flat, no fill of any color */
+/* Nav buttons — ALWAYS transparent with white text (idle, hover, pressed);
+   kills MUI's violet hover pill and primary-colored label */
 html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root {
     position: relative;
     font-weight: 600;
-}
-
-/* Selected view: white text + underline that animates in from the center */
-html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root.MuiButton-colorPrimary {
     color: #ffffff;
+    background-color: transparent;
 }
 
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root:hover,
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root:focus-visible,
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root:active {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+/* Underline element on every nav button — width 0 keeps it invisible */
 html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root::after {
     content: "";
     position: absolute;
@@ -240,6 +254,7 @@ html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-
     pointer-events: none;
 }
 
+/* Selected view: underline animates in from the center (text is already white) */
 html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root.MuiButton-colorPrimary::after {
     width: calc(100% - 1.5em);
 }
