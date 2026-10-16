@@ -1,14 +1,15 @@
 # Amethyst — a purple & violet theme for Jellyfin
 
-An **Apple TV / Netflix inspired** purple-violet skin for Jellyfin, built as a
-lightweight overlay on top of two excellent base stylesheets:
+An **Apple TV / Netflix inspired** purple-violet skin for Jellyfin.
 
-- **[ElegantFin](https://github.com/lscambo13/ElegantFin)** by lscambo13 — glass surfaces, cards, OSD, animations
-- **[Intro-Skipper button CSS](https://github.com/intro-skipper/intro-skipper-css)** — styled Skip Intro button
+**Self-contained**: the design base is
+**[ElegantFin](https://github.com/lscambo13/ElegantFin)** (© lscambo13,
+GPL-2.0), **embedded** into `theme.css` — the only external stylesheet
+loaded is the **[Intro-Skipper button CSS](https://github.com/intro-skipper/intro-skipper-css)**.
 
-Amethyst re-maps every color variable of both to a **purple / violet palette**
-and adds a few structural fixes (centered navbar on Jellyfin 12+, label-less
-library tiles, compact responsive detail-page buttons).
+Amethyst re-maps every color variable of the base to a **purple / violet
+palette** and curates all the small details: card progress bars, mini play
+buttons, watched flags, OSD icons and more.
 
 ## Palette
 
@@ -47,17 +48,26 @@ repo automatically, no configuration needed)
 Copy the whole content of [`theme.css`](theme.css) into
 Dashboard → **Branding** → **Custom CSS** and save.
 
-## What Amethyst changes on top of ElegantFin
+## What Amethyst changes on top of the base
 
 1. **Purple/violet palette** — all ElegantFin variables plus Jellyfin 12's
    `--jf-palette-*` variables (MUI navbar, dialogs, dashboard)
-2. **Centered navbar (desktop)** — on Jellyfin 12's modern MUI layout the
+2. **Curated details, all in theme color:**
+   - card **progress bars** (watch progress + player seek bar)
+   - **play buttons** on cards (hover FAB, mobile overlay button, list items)
+   - **watched flag** (green ✔ → violet), unseen-episode counts,
+     sync/media-source badges, "video version" flag
+   - **player OSD icons** (violet, white on hover), recording indicator
+   - the **Skip Intro** button adapts automatically (violet progress bar)
+3. **Centered navbar (desktop)** — on Jellyfin 12's modern MUI layout the
    server name stays on the left and the nav options are horizontally centered
    as pills; the active view gets a violet pill
-3. **Library tiles without labels** — "My Media" tiles show artwork only
-4. **Detail-page buttons** — extra spacing; on phones they spread across the
+4. **Library tiles without labels** — "My Media" tiles show artwork only
+5. **Detail-page buttons** — extra spacing; on phones they spread across the
    full width, on tablets they stack vertically; never overflow the screen
-5. The **Skip Intro button** adapts automatically (violet progress bar)
+
+> Note: the **Inter webfont** import that ships with ElegantFin was removed
+> (single-import policy) — text uses the system sans-serif instead.
 
 ## Publishing your repo
 
@@ -69,11 +79,13 @@ git push -u origin main
 
 ## Customization
 
-All colors live in the single `:root[data-theme]:root, html:root` block at the
-top of [`theme.css`](theme.css) — edit the hex values there and reload.
+All colors live in the single `:root[data-theme]:root, html:root` block in the
+**AMETHYST OVERRIDES** section at the bottom of [`theme.css`](theme.css) —
+edit the hex values there and reload. Do not edit the embedded base theme
+section.
 
 ## Credits & License
 
-- Base theme: [ElegantFin](https://github.com/lscambo13/ElegantFin) — © lscambo13, **GPL-2.0**
-- Skip button: [intro-skipper-css](https://github.com/intro-skipper/intro-skipper-css)
+- Base theme: [ElegantFin](https://github.com/lscambo13/ElegantFin) — © lscambo13, **GPL-2.0** (embedded)
+- Skip button: [intro-skipper-css](https://github.com/intro-skipper/intro-skipper-css) (loaded via CDN)
 - Amethyst overrides: **GPL-2.0** — see [LICENSE](LICENSE)
