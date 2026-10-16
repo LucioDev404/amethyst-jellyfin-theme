@@ -155,6 +155,22 @@ html .itemProgressBarForeground-recording {
     background-color: #e0609c;
 }
 
+/* Library-page (React) card progress bars — Jellyfin hardcodes the bar to
+   Jellyfin-blue (#00a4dc) via inline sx on the MUI LinearProgress; restyle
+   it to match the homepage card progress (violet fill on the EF track) */
+html .itemLinearProgress.MuiLinearProgress-root {
+    height: 0.35em;
+    background-color: var(--osdSeekBarBufferedColorAlpha) !important;
+    border-radius: var(--largeRadius);
+    overflow: hidden;
+}
+
+html .itemLinearProgress .MuiLinearProgress-bar {
+    background-color: var(--cardResumeProgressColor) !important;
+    opacity: 0.75;
+    border-radius: 0 var(--largeRadius) var(--largeRadius) 0;
+}
+
 /* Download-complete icons (base: blue) */
 html .downloadbutton-icon-complete,
 html .downloadbutton-icon-on {
@@ -248,7 +264,7 @@ html .osdHeader .paper-icon-button-light:not(:disabled) {
     width: 0;
     height: 2px;
     border-radius: 2px;
-    background: #ffffff;
+    background: var(--jf-palette-secondary-main);
     transform: translateX(-50%);
     transition: width 0.25s ease;
     pointer-events: none;
