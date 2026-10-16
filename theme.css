@@ -161,30 +161,29 @@ html .downloadbutton-icon-on {
     color: #8b5cf6;
 }
 
-/* Card hover play button — white icon on violet */
+/* Card hover play button — violet, white icon, centered on the card
+   (ElegantFin pins it to the bottom-left via --overlayPlayButtonPosition) */
 html .cardOverlayContainer > .cardOverlayFab-primary {
     color: #ffffff;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin: 0;
+    transform: translate(-50%, -50%);
 }
 
-/* Player OSD icons — violet, white on hover/press */
-html .videoOsdBottom .paper-icon-button-light:not(:disabled) {
-    color: var(--accentColor);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    html .videoOsdBottom .paper-icon-button-light:hover:not(:disabled) {
-        color: #ffffff;
-    }
-}
-
-html .videoOsdBottom .paper-icon-button-light:active:not(:disabled) {
+/* Player OSD icons — white in every state (bottom bar + OSD top bar) */
+html .videoOsdBottom .paper-icon-button-light:not(:disabled),
+html .osdHeader .paper-icon-button-light:not(:disabled) {
     color: #ffffff;
 }
 
 /* ----------------------------------------------------------------------------
    2. MODERN (MUI) NAVBAR — Jellyfin 12+ default layout
    Desktop only: server name stays pinned left, the other options
-   (Favorites, libraries, …) are centered across the screen as pills.
+   (Favorites, libraries, …) are centered across the screen. Flat buttons —
+   the selected view is white with an underline that animates in.
    Scoped so the library toolbar's Stack is never affected.
    ---------------------------------------------------------------------------- */
 
@@ -216,15 +215,33 @@ html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-
     transform: translateY(-50%);
 }
 
-/* Pill design for the nav options */
+/* Nav buttons — flat, no fill of any color */
 html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root {
-    border-radius: 100px;
+    position: relative;
     font-weight: 600;
 }
 
-/* Active library/view gets a soft violet pill (accent text from the palette) */
+/* Selected view: white text + underline that animates in from the center */
 html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root.MuiButton-colorPrimary {
-    background-color: rgba(139, 92, 246, 0.22);
+    color: #ffffff;
+}
+
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0.3em;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: #ffffff;
+    transform: translateX(-50%);
+    transition: width 0.25s ease;
+    pointer-events: none;
+}
+
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root.MuiButton-colorPrimary::after {
+    width: calc(100% - 1.5em);
 }
 
 /* ----------------------------------------------------------------------------
