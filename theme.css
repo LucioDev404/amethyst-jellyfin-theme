@@ -201,6 +201,34 @@ html .cardOverlayContainer > .cardOverlayFab-primary:hover {
 html .videoOsdBottom .paper-icon-button-light:not(:disabled),
 html .osdHeader .paper-icon-button-light:not(:disabled) {
     color: #ffffff;
+    border-radius: 50%;
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+/* Hover — soft violet halo that breathes in, with a gentle lift */
+@media (hover: hover) and (pointer: fine) {
+    html .videoOsdBottom .paper-icon-button-light:hover:not(:disabled),
+    html .osdHeader .paper-icon-button-light:hover:not(:disabled) {
+        color: #ffffff !important;
+        background-color: rgba(139, 92, 246, 0.22) !important;
+        box-shadow:
+            0 0 0 1px rgba(192, 132, 252, 0.25),
+            0 2px 18px rgba(139, 92, 246, 0.35);
+        transform: scale(1.1);
+    }
+}
+
+/* Press — deeper violet, slight sink */
+html .videoOsdBottom .paper-icon-button-light:active:not(:disabled),
+html .osdHeader .paper-icon-button-light:active:not(:disabled) {
+    color: #ffffff !important;
+    background-color: rgba(139, 92, 246, 0.38) !important;
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+    transform: scale(0.96);
 }
 
 /* ----------------------------------------------------------------------------
