@@ -54,14 +54,16 @@ Dashboard → **Branding** → **Custom CSS** and save.
    `--jf-palette-*` variables (MUI navbar, dialogs, dashboard)
 2. **Curated details, all in theme color:**
    - card **progress bars** (watch progress + player seek bar)
-   - **play buttons** on cards (hover FAB, mobile overlay button, list items)
+   - **play buttons** on cards (hover FAB — centered on the artwork —,
+     mobile overlay button, list items)
    - **watched flag** (green ✔ → violet), unseen-episode counts,
      sync/media-source badges, "video version" flag
-   - **player OSD icons** (violet, white on hover), recording indicator
+   - **player OSD icons** in white, recording indicator in theme accent
    - the **Skip Intro** button adapts automatically (violet progress bar)
 3. **Centered navbar (desktop)** — on Jellyfin 12's modern MUI layout the
-   server name stays on the left and the nav options are horizontally centered
-   as pills; the active view gets a violet pill
+   server name stays on the left and the nav options are horizontally
+   centered; buttons are flat (no fill), and the selected view shows **white
+   text with an underline that animates in from the center**
 4. **Library tiles without labels** — "My Media" tiles show artwork only
 5. **Detail-page buttons** — extra spacing; on phones they spread across the
    full width, on tablets they stack vertically; never overflow the screen
