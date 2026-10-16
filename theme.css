@@ -197,7 +197,7 @@ html .osdHeader .paper-icon-button-light:not(:disabled) {
    ---------------------------------------------------------------------------- */
 
 /* Center the nav options row across the screen without shifting layout */
-html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root {
+.layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root {
     position: absolute;
     left: 24px;
     right: 24px;
@@ -206,12 +206,12 @@ html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-r
 }
 
 /* Children stay clickable; the row itself lets clicks pass through */
-html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root > * {
+.layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root > * {
     pointer-events: auto;
 }
 
 /* Keep the server name (first child of the nav row) pinned at the left edge */
-html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root > .MuiButton-root:first-child {
+.layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root > .MuiButton-root:first-child {
     position: absolute;
     left: 0;
     top: 50%;
@@ -221,7 +221,7 @@ html .layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-r
 /* Nav text buttons — ALWAYS transparent with white text (idle, hover,
    pressed). !important is REQUIRED: the embedded ElegantFin forces
    .MuiButton-colorPrimary into a solid submit-style pill with !important. */
-html .layout-desktop .MuiAppBar-root .MuiButton-text {
+.layout-desktop .MuiAppBar-root .MuiButton-text {
     position: relative;
     font-weight: 600;
     color: #ffffff !important;
@@ -230,9 +230,9 @@ html .layout-desktop .MuiAppBar-root .MuiButton-text {
     box-shadow: none !important;
 }
 
-html .layout-desktop .MuiAppBar-root .MuiButton-text:hover,
-html .layout-desktop .MuiAppBar-root .MuiButton-text:focus-visible,
-html .layout-desktop .MuiAppBar-root .MuiButton-text:active {
+.layout-desktop .MuiAppBar-root .MuiButton-text:hover,
+.layout-desktop .MuiAppBar-root .MuiButton-text:focus-visible,
+.layout-desktop .MuiAppBar-root .MuiButton-text:active {
     color: #ffffff !important;
     background-color: transparent !important;
     border: 0 !important;
@@ -240,7 +240,7 @@ html .layout-desktop .MuiAppBar-root .MuiButton-text:active {
 }
 
 /* Underline element on every nav text button — width 0 keeps it invisible */
-html .layout-desktop .MuiAppBar-root .MuiButton-text::after {
+.layout-desktop .MuiAppBar-root .MuiButton-text::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -256,7 +256,7 @@ html .layout-desktop .MuiAppBar-root .MuiButton-text::after {
 
 /* Selected view (MuiButton-textPrimary): underline animates in from the
    center; text is already white via the rule above */
-html .layout-desktop .MuiAppBar-root .MuiButton-text.MuiButton-textPrimary::after {
+.layout-desktop .MuiAppBar-root .MuiButton-text.MuiButton-textPrimary::after {
     width: calc(100% - 1.5em);
 }
 
