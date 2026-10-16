@@ -300,7 +300,14 @@ html .osdHeader .paper-icon-button-light:active:not(:disabled) {
 
 /* Selected view (MuiButton-textPrimary): underline animates in from the
    center; text is already white via the rule above */
-.layout-desktop .MuiAppBar-root .MuiButton-text.MuiButton-textPrimary::after {
+html .layout-desktop .MuiAppBar-root .MuiButton-text.MuiButton-textPrimary::after {
+    width: calc(100% - 1.5em);
+}
+
+/* Hover: the same underline animates in while hovering and reverses
+   (back to width 0) when the mouse leaves — the base ::after transition
+   handles both directions */
+html .layout-desktop .MuiAppBar-root .MuiButton-text:hover::after {
     width: calc(100% - 1.5em);
 }
 
