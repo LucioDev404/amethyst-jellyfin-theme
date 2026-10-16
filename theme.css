@@ -311,6 +311,11 @@ html .osdHeader .paper-icon-button-light:active:not(:disabled) {
     width: calc(100% - 1.5em);
 }
 
+/* Server-name button (the "logo tab") — never gets an underline */
+.layout-desktop .MuiAppBar-root .MuiToolbar-dense:first-of-type .MuiStack-root > .MuiButton-root:first-child::after {
+    content: none;
+}
+
 /* ----------------------------------------------------------------------------
    3. LIBRARY TILES ("My Media" / "Film", "Serie TV", …)
    Artwork only — no label underneath, and no reserved space for it.
