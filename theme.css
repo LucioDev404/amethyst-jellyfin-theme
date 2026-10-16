@@ -1,0 +1,275 @@
+/* ============================================================================
+   AMETHYST for Jellyfin — purple & violet, Apple TV / Netflix inspired
+   ----------------------------------------------------------------------------
+   Base    : ElegantFin (lscambo13)  +  Intro-Skipper button CSS — via CDN
+   Version : 1.0
+   License : GPL-2.0 (matches ElegantFin)
+   Repo    : https://github.com/<YOUR-USER>/amethyst-jellyfin-theme
+
+   This file ONLY:
+     1. loads the two base stylesheets,
+     2. re-maps their color variables to the Amethyst purple/violet palette,
+     3. adds a few structural fixes (centered MUI navbar on Jellyfin 12+,
+        label-less library tiles, compact responsive detail buttons).
+   Everything else (glass, cards, OSD, hover effects) comes from ElegantFin.
+
+   Install — pick ONE:
+     A) Dashboard → Branding → Custom CSS:
+          @import url("https://cdn.jsdelivr.net/gh/<YOUR-USER>/amethyst-jellyfin-theme@main/theme.css");
+     B) Paste this whole file into Custom CSS (works too — @import is at top).
+   ============================================================================ */
+
+@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css");
+@import url("https://cdn.jsdelivr.net/gh/intro-skipper/intro-skipper-css@main/skip-button.min.css");
+
+/* ----------------------------------------------------------------------------
+   1. AMETHYST PALETTE
+   Re-maps ElegantFin's variables (:root wins over its own dark block) and
+   Jellyfin 12's --jf-palette-* variables (MUI navbar / dashboard / dialogs).
+   Both selectors out-specify `:root` and `:root[data-theme=…]`.
+   ---------------------------------------------------------------------------- */
+:root[data-theme]:root,
+html:root {
+    /* — ElegantFin surfaces (deep violet-black) — */
+    --darkerGradientPoint: #0b0714;
+    --darkerGradientPointAlpha: rgba(11, 7, 20, 0.85);
+    --lighterGradientPoint: #191026;
+    --lighterGradientPointAlpha: rgba(25, 16, 38, 0.85);
+    --gradientPointAlpha: rgba(25, 16, 38, 0.3);
+
+    /* — Header & drawer (violet glass) — */
+    --headerColor: rgba(13, 8, 24, 0.75);
+    --drawerColor: rgba(16, 10, 28, 0.92);
+    --headerColorGradient: linear-gradient(
+        180deg,
+        rgba(13, 8, 24, 0.95) 30%,
+        55%,
+        transparent 90%
+    );
+    --headerColorGradientAlt: linear-gradient(180deg, #0d0818, 70%, transparent);
+
+    /* — Borders & selectors — */
+    --borderColor: #4c3a6e;
+    --darkerBorderColor: #2a1f42;
+    --lighterBorderColor: rgba(167, 139, 250, 0.25);
+    --selectorBackgroundColor: #2a1c44;
+    --selectorBackgroundColorAlpha: rgba(42, 28, 68, 0.5);
+    --tableBodyColor: #241838;
+    --textareaBackgroundColor: var(--selectorBackgroundColor);
+
+    /* — Text (violet-tinted white) — */
+    --textColor: #e9e4ff;
+    --dimTextColor: #a99cc9;
+
+    /* — Accent (violet) — */
+    --accentColor: #8b5cf6;
+    --accentHoverColor: #a78bfa;
+    --semiTransparentAccentColor: rgba(139, 92, 246, 0.18);
+    --btnSubmitColor: #6d28d9;
+    --btnSubmitBorderColor: #a78bfa;
+    --checkboxCheckedBgColor: #8b5cf6;
+    --highlightOutlineColor: #a78bfa;
+    /* --btnMiniPlayColor / --btnDeleteColor: intentionally left stock
+       (green play / red delete stay recognizable). */
+
+    /* — Jellyfin 12 modern app (MUI surfaces: navbar, dialogs, dashboard) — */
+    --jf-palette-background-default: #0b0714;
+    --jf-palette-background-paper: #191026;
+    --jf-palette-background-paperChannel: 25 16 38;
+    --jf-palette-background-defaultImage: radial-gradient(
+        120% 55% at 50% 0%,
+        rgba(124, 58, 237, 0.16) 0%,
+        rgba(11, 7, 20, 0) 62%
+    );
+    --jf-palette-primary-main: #8b5cf6;
+    --jf-palette-primary-mainChannel: 139 92 246;
+    --jf-palette-primary-dark: #7c3aed;
+    --jf-palette-primary-light: #a78bfa;
+    --jf-palette-primary-contrastText: #ffffff;
+    --jf-palette-secondary-main: #c084fc;
+    --jf-palette-secondary-contrastText: #2b1655;
+    --jf-palette-text-primary: #f6f4ff;
+    --jf-palette-text-secondary: rgba(233, 228, 255, 0.72);
+    --jf-palette-action-focus: rgba(167, 139, 250, 0.26);
+    --jf-palette-action-hover: rgba(167, 139, 250, 0.12);
+    --jf-palette-action-selectedOpacity: 0.28;
+    --jf-palette-divider: rgba(167, 139, 250, 0.16);
+    --jf-palette-common-white: #ffffff;
+    --jf-palette-error-main: #c2337a;
+    --jf-palette-error-dark: #9c215f;
+    --jf-palette-error-light: #e0609c;
+    --jf-palette-error-contrastText: #ffffff;
+    --jf-palette-AppBar-defaultBg: #0e0918;
+    --jf-palette-AppBar-transparentBg: rgba(11, 7, 20, 0.42);
+    --jf-palette-Button-inheritContainedBg: rgba(167, 139, 250, 0.16);
+    --jf-palette-Button-inheritContainedHoverBg: rgba(167, 139, 250, 0.3);
+    --jf-palette-FilledInput-bg: rgba(167, 139, 250, 0.09);
+    --jf-palette-FilledInput-borderColor: rgba(167, 139, 250, 0.16);
+    --jf-palette-Alert-infoFilledBg: #35245e;
+    --jf-palette-Alert-infoFilledColor: #f3efff;
+    --jf-palette-SnackbarContent-bg: #241838;
+    --jf-palette-SnackbarContent-color: #f6f4ff;
+    --jf-card-borderRadius: 0.6em;
+}
+
+/* ----------------------------------------------------------------------------
+   2. MODERN (MUI) NAVBAR — Jellyfin 12+ default layout
+   Desktop only: server name stays pinned left, the other options
+   (Favorites, libraries, …) are centered across the screen as pills.
+   Scoped so the library toolbar's Stack is never affected.
+   ---------------------------------------------------------------------------- */
+
+/* Deterministic toolbar padding so the pinned name aligns with content */
+html .layout-desktop .MuiToolbar-root {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+/* Center the nav options row across the screen without shifting layout */
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root:has(> .MuiButton-root:first-child) {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Children stay clickable; the row itself lets clicks pass through */
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root > * {
+    pointer-events: auto;
+}
+
+/* Keep the server name (first child) pinned at the left edge */
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root > .MuiButton-root:first-child {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Pill design for the nav options */
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root {
+    border-radius: 100px;
+    font-weight: 600;
+}
+
+/* Active library/view gets a soft violet pill (accent text from the palette) */
+html .layout-desktop .MuiAppBar-root > .MuiToolbar-root:first-child > .MuiStack-root .MuiButton-root.MuiButton-colorPrimary {
+    background-color: rgba(139, 92, 246, 0.22);
+}
+
+/* ----------------------------------------------------------------------------
+   3. LIBRARY TILES ("My Media" / "Film", "Serie TV", …)
+   Artwork only — no label underneath, and no reserved space for it.
+   Matches every kind of library view (by collection type and item type).
+   ---------------------------------------------------------------------------- */
+html .card[data-collectiontype] .cardFooter,
+html .card[data-type="CollectionFolder"] .cardFooter,
+html .card[data-type="Folder"] .cardFooter,
+html .card[data-type="UserView"] .cardFooter,
+html .card[data-type="Playlist"] .cardFooter,
+html .card[data-type="Channel"] .cardFooter,
+html .card[data-type="TvChannel"] .cardFooter {
+    display: none;
+}
+
+html .card[data-collectiontype] .cardBox-bottompadded,
+html .card[data-type="CollectionFolder"] .cardBox-bottompadded,
+html .card[data-type="Folder"] .cardBox-bottompadded,
+html .card[data-type="UserView"] .cardBox-bottompadded,
+html .card[data-type="Playlist"] .cardBox-bottompadded,
+html .card[data-type="Channel"] .cardBox-bottompadded,
+html .card[data-type="TvChannel"] .cardBox-bottompadded {
+    margin-bottom: 0.6em !important;
+}
+
+/* ----------------------------------------------------------------------------
+   4. DETAIL PAGE BUTTONS — breathing room + responsive sizing
+   Width/touch-based media queries (NOT layout classes) so they work in the
+   mobile app and on any device. The row wraps, so buttons can never leave
+   the screen. ElegantFin already centers and wraps the row; we only tune
+   sizes, margins and the poster-column indent.
+   ---------------------------------------------------------------------------- */
+html .mainDetailButtons {
+    gap: 0.6em;
+}
+
+/* Phones (≤32em) — the floating poster sits beside the info block, so the
+   button row can safely span the full width; the ribbon's own 5% side padding
+   provides the small side margins. Buttons are spread evenly across it. */
+@media (max-width: 32em) {
+    html .mainDetailButtons {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        gap: 0.3em;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    html .mainDetailButtons .detailButton {
+        padding: 0.35em 0.55em !important;
+        font-size: 95%;
+    }
+
+    html .mainDetailButtons .detailButton-icon {
+        font-size: 1.4em !important;
+    }
+}
+
+/* Large phones (32–48em) — the poster floats beside the buttons, so the
+   37.5% poster-column indent is kept; buttons are a bit larger and wrap. */
+@media (min-width: 32.01em) and (max-width: 47.99em) {
+    html .mainDetailButtons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.35em;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    html .mainDetailButtons .detailButton {
+        padding: 0.4em 0.6em !important;
+        font-size: 95%;
+    }
+
+    html .mainDetailButtons .detailButton-icon {
+        font-size: 1.45em !important;
+    }
+}
+
+/* Tablets & touch devices on medium screens — vertical icon-over-text buttons */
+@media (min-width: 48em) and (max-width: 80em) and (pointer: coarse) {
+    html .mainDetailButtons {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.4em;
+        margin-top: 0.5em !important;
+        margin-bottom: 0.5em !important;
+    }
+
+    html .mainDetailButtons .detailButton {
+        flex-direction: column;
+        padding: 0.4em 0.55em !important;
+        font-size: 95%;
+    }
+
+    html .mainDetailButtons .detailButton-content {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    html .mainDetailButtons .detailButton-icon {
+        font-size: 1.45em !important;
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   5. ACCESSIBILITY — respect reduced motion
+   ---------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    html .mainDetailButtons .btnPlay {
+        transform: none;
+    }
+}
