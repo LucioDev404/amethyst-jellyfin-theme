@@ -424,7 +424,78 @@ html .mainDetailButtons {
 }
 
 /* ----------------------------------------------------------------------------
-   5. ACCESSIBILITY — respect reduced motion
+   5. EDITORS' CHOICE PLUGIN — pill play button
+   The plugin pins .editorsChoiceItemButton into the hero banner
+   (position:absolute / bottom:30px / width:fit-content) — preserved.
+   Higher specificity + !important beats the plugin's own CSS and the
+   embedded ElegantFin .button-submit rule.
+   ---------------------------------------------------------------------------- */
+.editorsChoiceItemButton.button-submit {
+    width: fit-content !important;
+    position: absolute;
+    bottom: 30px;
+    border-radius: 100px !important;
+    padding: 0.55em 1.5em !important;
+    background-color: var(--btnSubmitColor, #6d28d9) !important;
+    border: 0 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.02em;
+    box-shadow: 0 2px 12px rgba(139, 92, 246, 0.35);
+    transition:
+        box-shadow 0.2s ease,
+        filter 0.2s ease,
+        transform 0.15s ease;
+    white-space: nowrap;
+}
+
+/* Icon: size + balanced gap to the label (logical property: RTL-safe) */
+.editorsChoiceItemButton .cardOverlayButtonIcon {
+    font-size: 1.25em;
+    margin-inline-end: 0.4em;
+    vertical-align: middle;
+}
+
+/* Hover — violet glow + gentle lift */
+@media (hover: hover) and (pointer: fine) {
+    .editorsChoiceItemButton.button-submit:hover {
+        background-color: var(--btnSubmitColor, #6d28d9) !important;
+        filter: brightness(1.12);
+        box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+        transform: translateY(-1px);
+    }
+}
+
+/* Press — subtle sink */
+.editorsChoiceItemButton.button-submit:active {
+    filter: brightness(0.95);
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 1px 6px rgba(139, 92, 246, 0.3);
+}
+
+/* Keyboard focus — visible violet ring */
+.editorsChoiceItemButton.button-submit:focus-visible {
+    outline: 2px solid var(--accentHoverColor, #a78bfa);
+    outline-offset: 2px;
+}
+
+/* Responsive — tighter on phones, slightly larger on desktop */
+@media (max-width: 40em) {
+    .editorsChoiceItemButton.button-submit {
+        padding: 0.45em 1.2em !important;
+        font-size: 0.95em;
+        bottom: 20px;
+    }
+}
+
+@media (min-width: 60em) {
+    .editorsChoiceItemButton.button-submit {
+        padding: 0.6em 1.7em !important;
+    }
+}
+
+/* ----------------------------------------------------------------------------
+   6. ACCESSIBILITY — respect reduced motion
    ---------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
     html .mainDetailButtons .btnPlay {
