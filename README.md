@@ -1,6 +1,6 @@
 # 💜 Amethyst — a purple & violet theme for Jellyfin
 
-![Version](https://img.shields.io/badge/version-2.1-8b5cf6)
+![Version](https://img.shields.io/badge/version-2.2-8b5cf6)
 ![Jellyfin](https://img.shields.io/badge/Jellyfin-10.11%2B-191026)
 ![License](https://img.shields.io/badge/license-GPL--2.0-blue)
 
